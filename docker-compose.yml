@@ -1,0 +1,19 @@
+services:
+  scheduler-app:
+    build: .
+    ports:
+      - "1001:3000"
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /var/lib/postgresql/data/pgdata  
+    volumes:
+      - schedulerdb:/var/lib/postgresql/data  
+    ports:
+      - "2000:5432"  
+    restart: always 
+
+volumes:
+  schedulerdb:
