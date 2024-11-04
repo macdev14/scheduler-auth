@@ -11,8 +11,8 @@ export function error(
 ) {
   try {
     const msg = JSON.parse(err.message);
-    res.status(err.status).json({ msg });
+    res.status(err.statusCode).json({ msg });
   } catch (error) {
-    res.status(err.status).json({ msg: err.message });
+    res.status(err.statusCode).json({ msg: err.message });
   }
 }
