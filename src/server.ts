@@ -58,7 +58,7 @@ app.get('/dashboard', (req, res) => {
 app.post('/logout', (req, res) => {
   req.logout(err => {
     if (err) {
-      return next(err);
+        res.status(500).send('Error logging out user');
     }
     res.redirect('/login');
   });
