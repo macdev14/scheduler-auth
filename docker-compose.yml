@@ -12,7 +12,7 @@ services:
     volumes:
       - schedulerdb:/var/lib/postgresql/data  
     ports:
-      - "2000:5432"  
+      - "2005:5432"  
     restart: always 
 
 volumes:
