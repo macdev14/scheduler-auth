@@ -36,6 +36,11 @@ app.post('/register', async (req, res) => {
   }
 });
 
+// Protected route
+app.get('/', (req, res) => {
+    res.send('Hello world!');
+});
+
 // Login route
 app.post(
   '/login',
