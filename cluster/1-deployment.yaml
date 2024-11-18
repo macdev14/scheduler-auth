@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: scc-deployment
+  name: scheduler-deployment
   labels:
     app: scc
 spec:
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: scc
-          image: apache:latest
+          image: lmtp/scheduler-auth:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 90
