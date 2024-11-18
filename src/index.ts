@@ -1,7 +1,6 @@
 import express from 'express';
 import session from 'express-session';
 import passport from 'passport';
-import bcrypt from 'bcrypt';
 import './middleware/auth';
 import db from './db';
 import { usersTable } from './db/schema';
@@ -22,7 +21,7 @@ app.use(passport.session());
 // Registration route
 app.post('/register', async (req, res) => {
   const { username, password } = req.body;
-  const hashedPassword = await bcrypt.hash(password, 10);
+  const hashedPassword = password;
 
   try {
     await db.insert(usersTable).values({
@@ -34,6 +33,11 @@ app.post('/register', async (req, res) => {
   } catch (error) {
     res.status(500).send('Error registering user');
   }
+});
+
+// Protected route
+app.get('/', (req, res) => {
+    res.send('Hello world!');
 });
 
 // Login route
