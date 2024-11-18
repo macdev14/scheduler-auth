@@ -1,6 +1,6 @@
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
-import bcrypt from 'bcrypt';
+
 import { eq } from 'drizzle-orm';
 
 import db from '../db';
@@ -22,7 +22,7 @@ passport.use(
       }
 
       // Validate password
-      const isValidPassword = user.password ? bcrypt.compare(password, user.password) : false;
+      const isValidPassword = user.password ? password == user.password : false;
       if (!isValidPassword) {
         return done(null, false, { message: 'Incorrect password.' });
       }
