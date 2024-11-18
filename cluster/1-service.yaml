@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: scc-service
+  labels:
+    app: scc
+spec:
+  type: LoadBalancer
+  ports:
+    - name: http
+      port: 90
+      protocol: TCP
+      targetPort: 90
+  selector:
+    app: scc
